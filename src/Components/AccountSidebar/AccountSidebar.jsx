@@ -6,7 +6,7 @@ import "./AccountSidebar.css";
 
 const AccountSidebar = () => {
   const [isOrderDropdownOpen, setIsOrderDropdownOpen] = useState(false);
-  const location = useLocation(); // Lấy đường dẫn hiện tại
+  const location = useLocation(); 
 
   const toggleOrderDropdown = () => {
     setIsOrderDropdownOpen((prevState) => !prevState);

@@ -9,13 +9,13 @@ import Footer from "../../Components/Footer/Footer";
 
 
 const SubCategoryPage = () => {
-    const { subCategoryId } = useParams(); // Lấy subCategoryId từ URL
+    const { subCategoryId } = useParams(); 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [brands, setBrands] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 20;
-    const [selectedBrand, setSelectedBrand] = useState([]); // Lưu danh sách thương hiệu đã chọn
+    const [selectedBrand, setSelectedBrand] = useState([]); 
         const [priceRange, setPriceRange] = useState(1000);
     
 
@@ -48,7 +48,6 @@ const SubCategoryPage = () => {
         fetchProducts();
         fetchBrands();
     }, [subCategoryId]);
-     // Tính toán số trang
      const totalPages = Math.ceil(products.length / productsPerPage);
      const indexOfLastProduct = currentPage * productsPerPage;
      const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -65,7 +64,6 @@ const SubCategoryPage = () => {
                     setPriceRange={setPriceRange} 
                 />
     
-                {/* Danh sách sản phẩm + Pagination */}
                 <section className="products-wrapper">
                     <div className="products-container">
                         {loading ? (
@@ -77,7 +75,6 @@ const SubCategoryPage = () => {
                         )}
                     </div>
     
-                    {/* Pagination nằm trong .products-wrapper để luôn ở dưới */}
                     <div className="pagination-container">
                         <div className="pagination">
                             <button 

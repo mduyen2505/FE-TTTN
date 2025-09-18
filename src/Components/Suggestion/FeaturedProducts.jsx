@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./Style.css";
 import { FEATURED_PRODUCTS } from "../../config/ApiConfig";
 import ProductCard from "../ProductCard/ProductCard";
-import { getWishlist } from "../../services/WishlistService"; // Import wishlist service
+import { getWishlist } from "../../services/WishlistService"; 
 
 const Suggestion = () => {
     const [products, setProducts] = useState([]);
-    const [wishlist, setWishlist] = useState([]); // Danh sách yêu thích
+    const [wishlist, setWishlist] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const Suggestion = () => {
 
         const fetchWishlist = async () => {
             const wishlistData = await getWishlist();
-            setWishlist(wishlistData); // Cập nhật danh sách yêu thích từ API
+            setWishlist(wishlistData); 
         };
 
         fetchProducts();
@@ -47,7 +47,7 @@ const Suggestion = () => {
                         <ProductCard 
                             key={product._id} 
                             product={product} 
-                            initialFavorite={wishlist.includes(product._id)} // Truyền trạng thái yêu thích vào ProductCard
+                            initialFavorite={wishlist.includes(product._id)} 
                         />
                     ))}
                 </div>

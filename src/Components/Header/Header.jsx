@@ -17,6 +17,9 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import axios from "axios";
 import { GET_CART } from "../../config/ApiConfig";
 
+   
+
+
 const Header = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -42,6 +45,8 @@ const Header = () => {
         };
 
     }, []);
+
+
     const checkLoginStatus = () => {
         const storedUser = localStorage.getItem("user");
         if (storedUser) {

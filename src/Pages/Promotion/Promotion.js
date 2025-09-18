@@ -8,10 +8,10 @@ import "./Style.css";
 
 const Promo = () => {
     const [products, setProducts] = useState([]);
-    const [vouchers, setVouchers] = useState([]); // Lưu danh sách voucher từ API
+    const [vouchers, setVouchers] = useState([]); 
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
-    const productsPerPage = 20; // Số sản phẩm mỗi trang
+    const productsPerPage = 20; 
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -37,7 +37,7 @@ const Promo = () => {
                 const data = await response.json();
 
                 if (data && Array.isArray(data.data)) {
-                    setVouchers(data.data); // Lấy đúng danh sách voucher từ API
+                    setVouchers(data.data); 
                 } else {
                     console.error("Dữ liệu API không đúng:", data);
                     setVouchers([]);

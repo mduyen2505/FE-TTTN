@@ -25,11 +25,11 @@ const ProductDetail = () => {
     const [isFavorite, setIsFavorite] = useState(false);
     const orderProductMap = JSON.parse(localStorage.getItem("orderProductMap")) || {};
     const orderId = orderProductMap[id] || null;
-    const [rating, setRating] = useState(5); // Mặc định 5 sao
-    const [comment, setComment] = useState(""); // Mặc định không có nội dung
-    const [selectedRating, setSelectedRating] = useState(5); // Mặc định 5 sao
+    const [rating, setRating] = useState(5); 
+    const [comment, setComment] = useState(""); 
+    const [selectedRating, setSelectedRating] = useState(5); 
     const [reviews, setReviews] = useState([]);
-    const [showReviewModal, setShowReviewModal] = useState(false); // Trạng thái hiển thị modal
+    const [showReviewModal, setShowReviewModal] = useState(false); 
     const [recommendedProducts, setRecommendedProducts] = useState([]);
 
 
@@ -50,7 +50,7 @@ const ProductDetail = () => {
 
         const fetchWishlist = async () => {
             const wishlist = await getWishlist();
-            setIsFavorite(wishlist.includes(id)); // Kiểm tra sản phẩm có trong wishlist không
+            setIsFavorite(wishlist.includes(id)); 
         };
         const fetchReviews = async () => {
             try {
@@ -89,14 +89,13 @@ const ProductDetail = () => {
             return;
         }
 
-        setIsFavorite(!isFavorite); // Cập nhật UI ngay lập tức
+        setIsFavorite(!isFavorite); 
 
         if (!isFavorite) {
             const success = await addToWishlist(id);
         }
     };
 
-    // Hàm gọi API cập nhật số lượng sản phẩm (Tăng/Giảm)
     const updateCartQuantity = async (productId, action) => {
         try {
             const token = localStorage.getItem("token");
@@ -114,12 +113,10 @@ const ProductDetail = () => {
             if (response.status === 200) {
                 console.log("Cập nhật số lượng thành công:", response.data);
     
-                // 🔥 Lấy giỏ hàng mới để cập nhật số lượng chính xác
                 const updatedCart = await axios.get(API_CART, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
     
-                // 🔥 Tìm sản phẩm trong giỏ hàng để cập nhật số lượng
                 const updatedProduct = updatedCart.data.cart.find(item => item.id === productId);
                 if (updatedProduct) {
                     setQuantity(updatedProduct.quantity);
@@ -231,7 +228,6 @@ const ProductDetail = () => {
 
 
 
-                    {/* Nút thêm vào giỏ hàng + icon trái tim (cùng 1 hàng) */}
                     <div className="product-detail-actions">
                         <button className="product-detail-add-to-cart" onClick={() => addToCart(product._id)}>Thêm vào giỏ</button>
                         <button className="product-detail-favorite" onClick={handleWishlistToggle}>
@@ -318,8 +314,7 @@ const ProductDetail = () => {
                                 <span className="product-detail-comment-date">
                                     {new Date(review.createdAt).toLocaleDateString()}
                                 </span>
-                                 {/* 👇 Hiển thị phản hồi từ admin tại đây */}
-                                 {/* 👇 Hiển thị phản hồi từ admin tại đây */}
+                                 
 {review.response && review.response.text && (
   <div className="admin-response">
     <span className="admin-response-label">Glowify</span>
@@ -390,7 +385,6 @@ const ProductDetail = () => {
                         <h2>Đánh giá sản phẩm</h2>
                         <p>{product.name}</p>
 
-                        {/* Chọn sao bằng icon */}
                         <div className="review-modal-rating">
                             {[1, 2, 3, 4, 5].map((star) => (
                                 <span
@@ -406,7 +400,6 @@ const ProductDetail = () => {
                             ))}
                         </div>
 
-                        {/* Ô nhập đánh giá lớn hơn */}
                         <textarea 
                             className="review-textarea"
                             placeholder="Nhập đánh giá của bạn..."

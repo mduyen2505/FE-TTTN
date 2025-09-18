@@ -27,7 +27,7 @@ const OrderCancelled = () => {
         });
 
         if (response.data.status === "OK") {
-          // Lọc chỉ lấy đơn hàng có status "Cancelled"
+          
           const CancelledOrders = response.data.data.filter(order => order.status === "Cancelled");
           setOrders(CancelledOrders);
         } else {
@@ -65,7 +65,7 @@ const OrderCancelled = () => {
               <div key={order._id} className="orderaccount-card">
                <button
   className="orderaccount-detail-button"
-  onClick={() => navigate(`/orders/${order._id}`)} // Điều hướng đúng
+  onClick={() => navigate(`/orders/${order._id}`)} 
 >
   Xem chi tiết
 </button>
@@ -82,7 +82,7 @@ const OrderCancelled = () => {
                   </span>
                 </div>
 
-                {/* Danh sách sản phẩm trong đơn hàng */}
+                
                 {order.products.map((item, idx) => (
                   <div key={idx} className="orderaccount-item">
                     <img
@@ -104,7 +104,7 @@ const OrderCancelled = () => {
                   </div>
                 ))}
 
-                {/* Tổng tiền */}
+                
                 <div className="orderaccount-summary">
                   <span className="orderaccount-total">
                     Tổng tiền ({order.products.length} sản phẩm): <strong>{order.orderTotal.toLocaleString()} đ</strong>

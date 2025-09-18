@@ -27,7 +27,6 @@ const OrderPending = () => {
         });
 
         if (response.data.status === "OK") {
-          // Lọc chỉ lấy đơn hàng có status "Pending"
           const pendingOrders = response.data.data.filter(order => order.status === "Pending");
           setOrders(pendingOrders);
         } else {
@@ -50,7 +49,7 @@ const OrderPending = () => {
     try {
       const token = localStorage.getItem("token");
   
-      console.log("🔍 Gửi yêu cầu hủy đơn hàng với orderId:", orderId); // Log kiểm tra
+      console.log("🔍 Gửi yêu cầu hủy đơn hàng với orderId:", orderId); 
   
       const response = await axios.put(
         "http://localhost:3000/api/orders/cancel",
@@ -61,7 +60,6 @@ const OrderPending = () => {
       console.log("✅ Phản hồi từ API hủy đơn hàng:", response.data);
   
       if (response.data.status === "OK") {
-        // Cập nhật danh sách đơn hàng
         setOrders(prevOrders => prevOrders.filter(order => order._id !== orderId));
         alert("Hủy đơn hàng thành công!");
       } else {
@@ -94,7 +92,7 @@ const OrderPending = () => {
               <div key={order._id} className="orderaccount-card">
                <button
   className="orderaccount-detail-button"
-  onClick={() => navigate(`/orders/${order._id}`)} // Điều hướng đúng
+  onClick={() => navigate(`/orders/${order._id}`)} 
 >
   Xem chi tiết
 </button>
@@ -111,7 +109,6 @@ const OrderPending = () => {
                   </span>
                 </div>
 
-                {/* Danh sách sản phẩm trong đơn hàng */}
                 {order.products.map((item, idx) => (
                   <div key={idx} className="orderaccount-item">
                     <img
@@ -133,7 +130,6 @@ const OrderPending = () => {
                   </div>
                 ))}
 
-                {/* Tổng tiền */}
                 <div className="orderaccount-summary">
                   <span className="orderaccount-total">
                     Tổng tiền ({order.products.length} sản phẩm): <strong>{order.orderTotal.toLocaleString()} đ</strong>

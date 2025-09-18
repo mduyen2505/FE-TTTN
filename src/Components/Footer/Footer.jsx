@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <footer className="footer">
           <div className="footer-container">
-            {/* Cột 1: Thông tin công ty */}
+            
             <div className="footer-column">
               <h2 className="footer-logo">
                 Glowify <span className="bold-text">Cosmestic </span>
@@ -21,7 +21,7 @@ const Footer = () => {
               </div>
             </div>
     
-            {/* Cột 2: About */}
+           
             <div className="footer-column">
               <h3>ABOUT</h3>
               <ul>
@@ -32,7 +32,7 @@ const Footer = () => {
               </ul>
             </div>
     
-            {/* Cột 3: My Account */}
+           
             <div className="footer-column">
               <h3>MY ACCOUNT</h3>
               <ul>
@@ -41,7 +41,7 @@ const Footer = () => {
               </ul>
             </div>
     
-            {/* Cột 4: Customer Care */}
+            
             <div className="footer-column">
               <h3>CUSTOMER CARE</h3>
               <ul>
@@ -52,7 +52,7 @@ const Footer = () => {
               </ul>
             </div>
     
-            {/* Cột 5: Đăng ký email */}
+            
             <div className="footer-column">
               <h3>SIGN UP FOR EMAILS</h3>
               <p>Stay informed, subscribe to our newsletter now!</p>
@@ -61,7 +61,7 @@ const Footer = () => {
             </div>
           </div>
     
-          {/* Dòng bản quyền & icon mạng xã hội */}
+          {}
           <div className="footer-bottom">
             <p>© 2025 Glowify</p>
             <div className="footer-socials">

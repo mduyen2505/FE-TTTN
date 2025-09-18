@@ -21,22 +21,21 @@ const SignUpPage = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // Xử lý khi nhập dữ liệu vào input
   const handleChange = (e) => {
     setFormData((prev) => {
       const newData = { ...prev, [e.target.name]: e.target.value };
-      console.log("Updating state:", newData); // Kiểm tra giá trị cập nhật
+      console.log("Updating state:", newData); 
       return newData;
     });
   };
 
-  // Xử lý đăng ký người dùng
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setSuccess("");
 
-    console.log("Form Data:", formData); // Debug kiểm tra giá trị nhập vào
+    console.log("Form Data:", formData); 
 
     if (!formData.password || !formData.confirmPassword) {
       setError("Vui lòng nhập đầy đủ mật khẩu!");
@@ -46,14 +45,14 @@ const SignUpPage = () => {
     if (formData.password.trim() !== formData.confirmPassword.trim()) {
       Swal.fire({
         toast: true,
-        position: "top-end", // Hiển thị ở góc phải trên cùng
+        position: "top-end", 
         title: "Nhập lại mật khẩu không khớp!",
         showConfirmButton: false,
-        timer: 1000, // 
+        timer: 1000,  
         timerProgressBar: true,
-        background: "#f6e6ec", // Màu nền nhẹ nhàng
-        color: "#333", // Màu chữ tối
-        icon: "error", // Hiển thị icon lỗi
+        background: "#f6e6ec", 
+        color: "#333", 
+        icon: "error", 
       });
       return;
     }
@@ -76,7 +75,7 @@ const SignUpPage = () => {
 
         localStorage.setItem("emailForOtp", formData.email);
 
-        // Chuyển hướng đến trang nhập OTP
+        
         navigate("/verify-otp", { state: { email: formData.email } });
       } else {
         Swal.fire({
@@ -92,17 +91,17 @@ const SignUpPage = () => {
         });
       }
     } catch (error) {
-      console.error("Error during registration:", error); // Ghi log chi tiết lỗi
+      console.error("Error during registration:", error); 
       Swal.fire({
         toast: true,
-        position: "top-end", // Hiển thị ở góc phải trên cùng
+        position: "top-end", 
         title: "Đăng ký thất bại. Vui lòng thử lại!",
         showConfirmButton: false,
         timer: 1000, // 
         timerProgressBar: true,
-        background: "#f6e6ec", // Màu nền nhẹ nhàng
-        color: "#333", // Màu chữ tối
-        icon: "error", // Hiển thị icon lỗi
+        background: "#f6e6ec", 
+        color: "#333", 
+        icon: "error", 
       });
     }
   };

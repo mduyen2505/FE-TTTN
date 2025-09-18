@@ -27,7 +27,6 @@ const OrderConfirmed = () => {
         });
 
         if (response.data.status === "OK") {
-          // Lọc chỉ lấy đơn hàng có status "Confirmed"
           const ConfirmedOrders = response.data.data.filter(order => order.status === "Confirmed");
           setOrders(ConfirmedOrders);
         } else {
@@ -66,7 +65,7 @@ const OrderConfirmed = () => {
               <div key={order._id} className="orderaccount-card">
                <button
   className="orderaccount-detail-button"
-  onClick={() => navigate(`/orders/${order._id}`)} // Điều hướng đúng
+  onClick={() => navigate(`/orders/${order._id}`)} 
 >
   Xem chi tiết
 </button>
@@ -83,7 +82,7 @@ const OrderConfirmed = () => {
                   </span>
                 </div>
 
-                {/* Danh sách sản phẩm trong đơn hàng */}
+               
                 {order.products.map((item, idx) => (
                   <div key={idx} className="orderaccount-item">
                     <img
@@ -105,7 +104,7 @@ const OrderConfirmed = () => {
                   </div>
                 ))}
 
-                {/* Tổng tiền */}
+               
                 <div className="orderaccount-summary">
                   <span className="orderaccount-total">
                     Tổng tiền ({order.products.length} sản phẩm): <strong>{order.orderTotal.toLocaleString()} đ</strong>

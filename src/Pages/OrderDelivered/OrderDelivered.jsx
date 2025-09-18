@@ -27,7 +27,6 @@ const OrderDelivered = () => {
         });
 
         if (response.data.status === "OK") {
-          // Lọc chỉ lấy đơn hàng có status "Delivered"
           const DeliveredOrders = response.data.data.filter(order => order.status === "Delivered");
           setOrders(DeliveredOrders);
           const orderProductMap = {};
@@ -72,7 +71,7 @@ const OrderDelivered = () => {
               <div key={order._id} className="orderaccount-card">
                <button
   className="orderaccount-detail-button"
-  onClick={() => navigate(`/orders/${order._id}`)} // Điều hướng đúng
+  onClick={() => navigate(`/orders/${order._id}`)} 
 >
   Xem chi tiết
 </button>
@@ -89,7 +88,6 @@ const OrderDelivered = () => {
                   </span>
                 </div>
 
-                {/* Danh sách sản phẩm trong đơn hàng */}
                 {order.products.map((item, idx) => (
                   <div key={idx} className="orderaccount-item">
                     <img
@@ -111,7 +109,6 @@ const OrderDelivered = () => {
                   </div>
                 ))}
 
-                {/* Tổng tiền */}
                 <div className="orderaccount-summary">
                   <span className="orderaccount-total">
                     Tổng tiền ({order.products.length} sản phẩm): <strong>{order.orderTotal.toLocaleString()} đ</strong>

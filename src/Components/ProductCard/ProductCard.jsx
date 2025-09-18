@@ -24,7 +24,7 @@ const ProductCard = ({ product }) => {
   const isLoggedIn = !!localStorage.getItem("token");
   const [isFavorite, setIsFavorite] = useState(false);
 
-  // Lấy danh sách wishlist từ server khi tải trang
+ 
   useEffect(() => {
     if (!isLoggedIn) {
       setIsFavorite(false);
@@ -34,22 +34,22 @@ const ProductCard = ({ product }) => {
     const fetchWishlist = async () => {
       const wishlist = await getWishlist();
       setIsFavorite(wishlist.includes(product._id));
-      localStorage.setItem("wishlist", JSON.stringify(wishlist)); // Cập nhật localStorage để đồng bộ
+      localStorage.setItem("wishlist", JSON.stringify(wishlist)); 
     };
 
     fetchWishlist();
   }, [product._id, isLoggedIn]);
 
-  // Xử lý thêm/xóa sản phẩm khỏi wishlist
+  
   const handleWishlistToggle = async (e) => {
-    e.stopPropagation(); // Ngăn sự kiện click vào cả card
+    e.stopPropagation(); 
 
     if (!isLoggedIn) {
       alert("Vui lòng đăng nhập để thêm vào yêu thích!");
       return;
     }
 
-    setIsFavorite(!isFavorite); // Cập nhật UI ngay lập tức để tránh độ trễ
+    setIsFavorite(!isFavorite); 
 
     if (!isFavorite) {
       await addToWishlist(product._id);
@@ -69,7 +69,7 @@ const ProductCard = ({ product }) => {
 
       
 
-      {/* Icon yêu thích */}
+     
       <div
         className="favorite-icon"
         role="button"
@@ -101,7 +101,7 @@ const ProductCard = ({ product }) => {
           <span className="rating-count">({product.reviewCount || 0})</span>
         </div>
 
-        {/* Hiển thị giá gốc và giá khuyến mãi */}
+       
         <div className="price-container">
         {product.discount !== undefined && product.discount !== null && product.discount > 0 ? (
     <>

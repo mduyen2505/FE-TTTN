@@ -1,5 +1,5 @@
 import React from "react";
-import "./OrderPage.css"; // Import CSS
+import "./OrderPage.css"; 
 
 const Modal = ({ title, children, onClose }) => {
   return (

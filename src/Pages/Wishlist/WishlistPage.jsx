@@ -19,7 +19,7 @@ const WishlistPage = () => {
   useEffect(() => {
     const loadWishlist = async () => {
         const data = await getWishlist();
-        setWishlist(data); // Gán trực tiếp danh sách wishlist nhận được từ API
+        setWishlist(data); 
     };
     loadWishlist();
 }, []);
@@ -28,7 +28,6 @@ const handleRemoveFromWishlist = async (productId) => {
     try {
       const response = await removeFromWishlist(productId);
       if (response) {
-        // Cập nhật danh sách wishlist sau khi xóa sản phẩm thành công
         setWishlist(wishlist.filter(product => product._id !== productId));
       }
     } catch (error) {

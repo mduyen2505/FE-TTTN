@@ -18,7 +18,7 @@ const DeleteAccount = () => {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // For redirection after deleting account
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -58,7 +58,6 @@ const DeleteAccount = () => {
     fetchUser();
   }, []);
 
-  // Handle account deletion
   const handleDeleteAccount = async () => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -77,7 +76,7 @@ const DeleteAccount = () => {
           alert("Tài khoản đã được xóa thành công.");
           localStorage.removeItem("token");
           localStorage.removeItem("user");
-          navigate("/login"); // Redirect to login page after account deletion
+          navigate("/login"); 
         }
       } catch (error) {
         console.error("Lỗi khi xóa tài khoản:", error);
@@ -103,27 +102,25 @@ const DeleteAccount = () => {
               <div className="form-row">
                 <div className="form-group">
                   <label>Họ và Tên: </label>
-                  <p>{user.username}</p> {/* Displaying user name as text */}
+                  <p>{user.username}</p> 
                 </div>
                 <div className="form-group">
                   <label>Số điện thoại:</label>
-                  <p>{user.phoneNumber}</p> {/* Displaying phone number as text */}
+                  <p>{user.phoneNumber}</p> 
                 </div>
               </div>
 
               <div className="form-group">
                 <label>Email:</label>
-                <p>{user.email}</p> {/* Displaying email as text */}
+                <p>{user.email}</p> 
               </div>
 
               <div className="form-group">
                 <label>Địa chỉ:</label>
-                <p>{user.address}</p> {/* Displaying address as text */}
+                <p>{user.address}</p> 
               </div>
 
-              {/* Remove Save button since we are not updating any data */}
-              
-              {/* Button to delete the account */}
+             
               <button className="delete-button" onClick={handleDeleteAccount}>
                 Xóa Tài Khoản
               </button>

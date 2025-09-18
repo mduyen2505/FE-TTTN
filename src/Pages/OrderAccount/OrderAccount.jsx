@@ -13,11 +13,10 @@ const OrderAccount = () => {
   const navigate = useNavigate();
 
 
-  // Gọi API lấy danh sách đơn hàng
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const token = localStorage.getItem("token"); // ✅ Lấy token từ localStorage
+        const token = localStorage.getItem("token");
         if (!token) {
           setError("Bạn chưa đăng nhập!");
           setLoading(false);
@@ -25,7 +24,7 @@ const OrderAccount = () => {
         }
 
         const response = await axios.get("http://localhost:3000/api/orders", {
-          headers: { Authorization: `Bearer ${token}` }, // ✅ Gửi token lên server
+          headers: { Authorization: `Bearer ${token}` }, 
         });
 
         if (response.data.status === "OK") {
@@ -63,7 +62,7 @@ const OrderAccount = () => {
 
 <button
   className="orderaccount-detail-button"
-  onClick={() => navigate(`/orders/${order._id}`)} // Điều hướng đúng
+  onClick={() => navigate(`/orders/${order._id}`)} 
 >
   Xem chi tiết
 </button>

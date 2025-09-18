@@ -19,7 +19,7 @@ const OrderDetail = () => {
     useEffect(() => {
         const fetchOrderDetail = async () => {
             try {
-              const token = localStorage.getItem("token"); // Lấy token từ localStorage
+              const token = localStorage.getItem("token"); 
               if (!token) {
                 setError("Bạn chưa đăng nhập!");
                 setLoading(false);
@@ -30,7 +30,7 @@ const OrderDetail = () => {
               console.log("🛠 Gọi API:", getOrderDetails(orderId));
           
               const response = await axios.get(getOrderDetails(orderId), {
-                headers: { Authorization: `Bearer ${token}` }, // ✅ Thêm token vào headers
+                headers: { Authorization: `Bearer ${token}` },
               });
           
               console.log("✅ API response:", response.data);
@@ -67,10 +67,8 @@ const OrderDetail = () => {
         <div className="content">
           <h2 className="content-title">Chi Tiết Đơn Hàng</h2>
 
-        {/* Khung chứa 2 cột */}
 <div className="order-detail-wrapper">
   
-  {/* Cột thông tin khách hàng */}
   <div className="order-detail-info">
     <p><strong>Tên khách hàng:</strong> {order.name}</p>
     <p><strong>Email:</strong> {order.email}</p>
@@ -78,10 +76,8 @@ const OrderDetail = () => {
     <p><strong>Địa chỉ giao hàng:</strong> {order.shippingAddress}</p>
   </div>
 
-  {/* Đường line dọc ngăn giữa */}
   <div className="order-detail-divider"></div>
 
-  {/* Cột thông tin đơn hàng */}
   <div className="order-detail-summary">
     <p><strong>Kết quả thanh toán:</strong> {order.paymentResult}</p>
     <p><strong>Tổng giá sản phẩm:</strong> {order.totalPrice.toLocaleString()} đ</p>
@@ -90,7 +86,6 @@ const OrderDetail = () => {
   </div>
 
 </div>
-          {/* Danh sách sản phẩm trong đơn hàng */}
           <h3 className="order-products-title">Danh sách sản phẩm</h3>
           <div className="order-status-wrapper">
   <p>
@@ -124,7 +119,6 @@ const OrderDetail = () => {
             );
           })}
 
-          {/* Tổng tiền */}
           <div className="orderaccount-summary">
             
             <p className="order-total">

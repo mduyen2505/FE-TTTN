@@ -27,7 +27,6 @@ const Ordershipped = () => {
         });
 
         if (response.data.status === "OK") {
-          // Lọc chỉ lấy đơn hàng có status "Shipped"
           const ShippedOrders = response.data.data.filter(order => order.status === "Shipped");
           setOrders(ShippedOrders);
         } else {
@@ -48,7 +47,6 @@ const Ordershipped = () => {
     try {
       const token = localStorage.getItem("token");
       
-      // Kiểm tra token hợp lệ
       if (!token) {
         alert("Vui lòng đăng nhập lại");
         navigate("/login");
@@ -66,7 +64,6 @@ const Ordershipped = () => {
         }
       );
   
-      // Xử lý response
       if (response.data.status === "OK") {
         setOrders(prev => prev.filter(order => order._id !== orderId));
         alert("Xác nhận thành công!");
@@ -74,7 +71,6 @@ const Ordershipped = () => {
     } catch (error) {
       console.error("Chi tiết lỗi:", error.response?.data || error.message);
       
-      // Xử lý các loại lỗi cụ thể
       if (error.response?.status === 401) {
         alert("Phiên đăng nhập hết hạn");
         localStorage.removeItem("token");
@@ -108,7 +104,7 @@ const Ordershipped = () => {
               <div key={order._id} className="orderaccount-card">
                <button
   className="orderaccount-detail-button"
-  onClick={() => navigate(`/orders/${order._id}`)} // Điều hướng đúng
+  onClick={() => navigate(`/orders/${order._id}`)} 
 >
   Xem chi tiết
 </button>
@@ -125,7 +121,6 @@ const Ordershipped = () => {
                   </span>
                 </div>
 
-                {/* Danh sách sản phẩm trong đơn hàng */}
                 {order.products.map((item, idx) => (
   item.productId ? (
     <div key={idx} className="orderaccount-item">

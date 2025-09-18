@@ -8,18 +8,18 @@ import { API_CART } from "../config/ApiConfig";
 // ✅ Hàm thêm sản phẩm vào giỏ hàng
 export const addToCart = async (productId, quantity = 1) => {
     try {
-        const token = localStorage.getItem("token"); // Lấy token từ localStorage
+        const token = localStorage.getItem("token"); 
         if (!token) {
             Swal.fire({
                             toast: true,
-                            position: "top-end", // Hiển thị ở góc phải trên cùng
+                            position: "top-end",
                             title: "Bạn cần đăng nhập để thêm vào giỏ hàng!",
                             showConfirmButton: false,
                             timer: 1000, // 
                             timerProgressBar: true,
-                            background: "#f6e6ec", // Màu nền nhẹ nhàng
-                            color: "#333", // Màu chữ tối
-                            icon: undefined, // ✅ Xóa icon
+                            background: "#f6e6ec", 
+                            color: "#333", 
+                            icon: undefined, 
                         });
             return;
         }
@@ -33,40 +33,40 @@ export const addToCart = async (productId, quantity = 1) => {
         if (response.status === 200 || response.status === 201) {
             Swal.fire({
                 toast: true,
-                position: "top-end", // Hiển thị ở góc phải trên cùng
+                position: "top-end", 
                 title: "Sản phẩm đã được thêm vào giỏ hàng!",
                 showConfirmButton: false,
                 timer: 1000, // 
                 timerProgressBar: true,
-                background: "#f6e6ec", // Màu nền nhẹ nhàng
-                color: "#333", // Màu chữ tối
-                icon: undefined, // ✅ Xóa icon
+                background: "#f6e6ec", 
+                color: "#333",
+                icon: undefined, 
             });
         } else {
             Swal.fire({
                 toast: true,
-                position: "top-end", // Hiển thị ở góc phải trên cùng
+                position: "top-end", 
                 title: "Thêm vào giỏ hàng thất bại!",
                 showConfirmButton: false,
-                timer: 1000, // 
+                timer: 1000,  
                 timerProgressBar: true,
-                background: "#f6e6ec", // Màu nền nhẹ nhàng
-                color: "#333", // Màu chữ tối
-                icon: undefined, // ✅ Xóa icon
+                background: "#f6e6ec", 
+                color: "#333", 
+                icon: undefined, 
             });
         }
     } catch (error) {
         alert("Có lỗi xảy ra! Vui lòng thử lại.");
         Swal.fire({
             toast: true,
-            position: "top-end", // Hiển thị ở góc phải trên cùng
+            position: "top-end", 
             title: "Có lỗi xảy ra! Vui lòng thử lại.",
             showConfirmButton: false,
-            timer: 1000, // 
+            timer: 1000,  
             timerProgressBar: true,
-            background: "#f6e6ec", // Màu nền nhẹ nhàng
-            color: "#333", // Màu chữ tối
-            icon: undefined, // ✅ Xóa icon
+            background: "#f6e6ec", 
+            color: "#333", 
+            icon: undefined, 
         });
     }
 };

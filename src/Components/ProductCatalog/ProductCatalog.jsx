@@ -32,7 +32,7 @@ const ProductCatalog = () => {
   return (
     <section className="productCat">
       <div className="container">
-        <h3 className="mb-4 hd">Brands</h3> {/* Tiêu đề căn trái */}
+        <h3 className="mb-4 hd">Brands</h3> 
         {brands.length === 0 ? (
           <p>Loading...</p>
         ) : (
@@ -69,7 +69,7 @@ const ProductCatalog = () => {
               ))}
             </Swiper>
 
-            {/* Chỉ 2 nút điều hướng nằm bên phải */}
+           
             <div className="swiper-nav-buttons">
               <div className="swiper-button-prev"></div>
               <div className="swiper-button-next"></div>

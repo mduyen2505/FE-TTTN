@@ -7,7 +7,7 @@ import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 
 const ProductsbyBrand = () => {
-    const { brandId } = useParams(); // Lấy brandId từ URL
+    const { brandId } = useParams(); 
     const [brand, setBrand] = useState(null);
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);

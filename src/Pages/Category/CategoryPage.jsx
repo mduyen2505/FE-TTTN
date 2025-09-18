@@ -8,13 +8,13 @@ import Footer from "../../Components/Footer/Footer";
 import Filter from "../../Components/Filters/Filters";
 
 const CategoryPage = () => {
-    const { typeId } = useParams(); // Lấy typeId từ URL
+    const { typeId } = useParams(); 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [brands, setBrands] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 20;
-    const [selectedBrand, setSelectedBrand] = useState([]); // Lưu danh sách thương hiệu đã chọn
+    const [selectedBrand, setSelectedBrand] = useState([]); 
     const [priceRange, setPriceRange] = useState(1000);
 
 
@@ -49,7 +49,7 @@ const CategoryPage = () => {
         fetchBrands();
     }, [typeId]);
 
-    // Tính toán số trang
+   
     const totalPages = Math.ceil(products.length / productsPerPage);
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;

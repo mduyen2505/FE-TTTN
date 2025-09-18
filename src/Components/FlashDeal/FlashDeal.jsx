@@ -11,27 +11,26 @@ const FlashDeal = () => {
     minutes: 0,
     seconds: 0,
   });
-  const [products, setProducts] = useState([]); // Lưu các sản phẩm đang có flash deal
+  const [products, setProducts] = useState([]); 
   const [endTime, setEndTime] = useState(null);
 
-  // Lấy dữ liệu sản phẩm từ API
+  
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(ALL_PRODUCTS);
         const allProducts = response.data;
 
-        // Lọc các sản phẩm đang trong flash deal (dựa vào startTime và endTime)
+        
         const currentTime = new Date();
         const filteredProducts = allProducts.filter(product => {
           const startTime = new Date(product.startTime);
           const endTime = new Date(product.endTime);
-          return currentTime >= startTime && currentTime <= endTime; // Kiểm tra xem sản phẩm có đang trong flash deal không
+          return currentTime >= startTime && currentTime <= endTime; 
         });
 
-        setProducts(filteredProducts); // Cập nhật danh sách sản phẩm trong flash deal
-
-        // Tìm thời gian kết thúc xa nhất trong các sản phẩm flash deal
+        setProducts(filteredProducts);
+        
         if (filteredProducts.length > 0) {
           const latestEndTime = new Date(Math.max(...filteredProducts.map(p => new Date(p.endTime).getTime())));
           setEndTime(latestEndTime);
@@ -43,13 +42,13 @@ const FlashDeal = () => {
 
     fetchProducts();
     
-    // Thiết lập interval để cập nhật danh sách sản phẩm mỗi phút
+    
     const productUpdateInterval = setInterval(fetchProducts, 60000);
     
     return () => clearInterval(productUpdateInterval);
   }, []);
 
-  // Cập nhật thời gian đếm ngược
+  
   useEffect(() => {
     if (!endTime) return;
 
@@ -68,7 +67,7 @@ const FlashDeal = () => {
         clearInterval(timer);
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         
-        // Khi hết thời gian, cập nhật lại danh sách sản phẩm
+       
         const fetchUpdatedProducts = async () => {
           try {
             const response = await axios.get(ALL_PRODUCTS);
@@ -81,7 +80,7 @@ const FlashDeal = () => {
             });
             setProducts(filteredProducts);
             
-            // Cập nhật lại thời gian kết thúc nếu còn sản phẩm
+            
             if (filteredProducts.length > 0) {
               const newEndTime = new Date(Math.max(...filteredProducts.map(p => new Date(p.endTime).getTime())));
               setEndTime(newEndTime);
@@ -98,7 +97,7 @@ const FlashDeal = () => {
     return () => clearInterval(timer);
   }, [endTime]);
 
-  // Kiểm tra và cập nhật danh sách sản phẩm khi có sản phẩm hết hạn
+  
   useEffect(() => {
     const checkProductsTimer = setInterval(() => {
       const currentTime = new Date();
@@ -110,13 +109,13 @@ const FlashDeal = () => {
       if (updatedProducts.length !== products.length) {
         setProducts(updatedProducts);
         
-        // Cập nhật lại thời gian kết thúc nếu còn sản phẩm
+       
         if (updatedProducts.length > 0) {
           const newEndTime = new Date(Math.max(...updatedProducts.map(p => new Date(p.endTime).getTime())));
           setEndTime(newEndTime);
         }
       }
-    }, 60000); // Kiểm tra mỗi phút
+    }, 60000); 
     
     return () => clearInterval(checkProductsTimer);
   }, [products]);

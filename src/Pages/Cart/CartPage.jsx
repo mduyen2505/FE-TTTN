@@ -69,7 +69,7 @@ const CartPage = () => {
     fetchCart();
   }, [navigate]);
 
-  // Hàm gọi API cập nhật số lượng sản phẩm (Tăng/Giảm)
+  
   const updateCartQuantity = async (productId, action) => {
     try {
       const token = localStorage.getItem("token");
